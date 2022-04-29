@@ -1,0 +1,26 @@
+steps:
+  # build the container image
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      ["build", "-t", "gcr.io/$laboratories-348622/laboratories:${SHORT_SHA}", "."]
+    # push the container image to Container Registry
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/$laboratories-348622/laboratories”]
+    # deploy container image to Cloud Run
+  - name: "gcr.io/cloud-builders/gcloud"
+    args:
+      [
+        "beta",
+        "run",
+        "deploy",
+        “laboratories”,
+        "--image",
+        "gcr.io/$laboratories-348622/laboratories:${SHORT_SHA}",
+        "--region",
+        "us-central1",
+        "--allow-unauthenticated",
+      ]
+    env:
+      - "PORT=8081”
+images:
+  - gcr.io/laboratories-348622/laboratories
