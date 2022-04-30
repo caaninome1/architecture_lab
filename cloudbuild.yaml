@@ -5,7 +5,7 @@ steps:
       ["build", "-t", "gcr.io/$laboratories-348622/laboratories:${SHORT_SHA}", "."]
     # push the container image to Container Registry
   - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "gcr.io/$laboratories-348622/laboratories”]
+    args: ["push", "gcr.io/$laboratories-348622/laboratories"]
     # deploy container image to Cloud Run
   - name: "gcr.io/cloud-builders/gcloud"
     args:
