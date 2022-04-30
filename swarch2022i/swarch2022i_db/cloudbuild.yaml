@@ -2,7 +2,7 @@ steps:
   # build the container image
   - name: "gcr.io/cloud-builders/docker"
     args:
-      ["build", "-t", "gcr.io/laboratories-348622/laboratories:latest", "."]
+      ["build", "-t", "gcr.io/laboratories-348622/laboratories", "."]
     # push the container image to Container Registry
   - name: "gcr.io/cloud-builders/docker"
     args: ["push", "gcr.io/laboratories-348622/laboratories"]
@@ -15,7 +15,7 @@ steps:
         "deploy",
         "laboratories",
         "--image",
-        "gcr.io/laboratories-348622/laboratories:latest",
+        "gcr.io/laboratories-348622/laboratories",
         "--region",
         "us-central1",
         "--allow-unauthenticated",
