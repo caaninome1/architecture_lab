@@ -13,7 +13,7 @@ steps:
         "beta",
         "run",
         "deploy",
-        “laboratories”,
+        "laboratories",
         "--image",
         "gcr.io/$laboratories-348622/laboratories:${SHORT_SHA}",
         "--region",
@@ -21,6 +21,6 @@ steps:
         "--allow-unauthenticated",
       ]
     env:
-      - "PORT=8081”
+      - "PORT=8081"
 images:
   - "gcr.io/$laboratories-348622/laboratories"
